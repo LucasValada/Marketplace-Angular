@@ -6,7 +6,7 @@ export interface INewProductResponse {
     price: number;
     description: string;
     category: string;
-    // status: string;
+    status: string;
     imageBase64: string;
   }[];
 }

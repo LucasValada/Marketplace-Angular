@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { INewProductRequest } from '../interfaces/new-product-request';
 import { Observable } from 'rxjs';
 import { INewProductResponse } from '../interfaces/new-product-response';
-import { IProductResponse } from '../interfaces/products-response';
+import { IProductsResponse } from '../interfaces/products-response';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class ProductsService {
     );
   }
 
-  getProducts(): Observable<IProductResponse> {
-    return this._httpClient.get<IProductResponse>('http://localhost:3000/api/products');
+  getProducts(): Observable<IProductsResponse> {
+    return this._httpClient.get<IProductsResponse>('http://localhost:3000/api/products');
   }
 }
