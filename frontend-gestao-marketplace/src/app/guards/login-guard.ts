@@ -18,7 +18,7 @@ export const loginGuard: CanActivateFn = async () => {
   try {
     await firstValueFrom(_userService.validateUser());
     // Token ok → não deixa ir ao login, redireciona para products
-    // ❗️RETORNA UrlTree (não usa navigate)
+    // RETORNA UrlTree (não usa navigate)
     return _router.createUrlTree(['/products']);
   } catch {
     // Token inválido → pode acessar login

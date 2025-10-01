@@ -12,7 +12,6 @@ export const authGuard: CanActivateFn = async (route, state) => {
   const HAS_TOKEN = _userAuthService.getUserToken();
   if (!HAS_TOKEN) {
     _router.createUrlTree(['/login']);
-    return false;
   }
 
   try {
