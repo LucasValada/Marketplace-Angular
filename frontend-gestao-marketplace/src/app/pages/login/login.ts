@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UserService } from '../../services/user';
 import { UserAuthService } from '../../services/user-auth';
 import { Router } from '@angular/router';
+import { take } from 'rxjs';
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule],
@@ -25,9 +26,7 @@ export class Login {
     this._userService
       .login(
         this.userForm.get('email')?.value as string,
-        this.userForm.get('password')?.value as string
-      )
-      .subscribe({
+        this.userForm.get('password')?.value as string).pipe(take(1)).subscribe({
         next: (response) => {
           this.loginErrorMessage = '';
           // salvar o token no localstorage e redirecionamento para tela de produtos
