@@ -11,7 +11,7 @@ export const authGuard: CanActivateFn = async (route, state) => {
   // NAO POSSUI TOKEN NO LOCAL STORAGE
   const HAS_TOKEN = _userAuthService.getUserToken();
   if (!HAS_TOKEN) {
-    _router.createUrlTree(['/login']);
+    _router.navigate(['/login']);
   }
 
   try {
@@ -20,13 +20,13 @@ export const authGuard: CanActivateFn = async (route, state) => {
 
     // se o usuário estiver logado e tentar acessar a página de login, redireciona para a página de produtos
     if (state.url === '/login') {
-      return _router.createUrlTree(['/products']);
+      return _router.navigate(['/products']);
     }
 
     // se o token for válido, deixa o usuário acessar a rota
     return true;
   } catch (error) {
     // se o token for inválido, redireciona para a página de login
-    return _router.createUrlTree(['/login']);
+    return _router.navigate(['/login']);
   }
 };
